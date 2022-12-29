@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Exercise</title>
+</head>
+<body>
+
+  <p onmouseover="makeBlue()" onmouseleave="makeRed()">TEST</p>
+
+  <script>
+    const pets = [{ name: 'Tofu', age: 11 }, { name: 'Gobi', age: 18 }];
+
+    function makeBlue() {
+      const p = document.querySelector('p');
+      p.style.color = '#4287f5';
+      p.style.fontSize = '50px';
+    }
+
+    function makeRed() {
+      const p = document.querySelector('p');
+      p.style.color = '#f54242';
+      p.style.fontSize = '20px';
+    }
+
+    // Regular
+    console.log('hello');
+
+    // clearing
+    console.clear();
+
+    // Interpolated
+    console.log('Hello I am an %s string!', 'interpolated');
+
+    const inter = "interpolated"
+    console.log(`Hello I am an ${inter} string!`);
+
+    // Styled
+    console.log('%c I am some styled text', 'color:blue; background:red; text-shadow: 0px 0px 12 black')
+
+    // warning!
+    console.warn('This is a fake warning');
+
+    // Error :|
+    console.error('This is a fake error');
+
+    // Info
+    console.error('This is some info');
+
+    // Testing
+    const test = "hello"
+    console.assert(test === "hello", 'Incorrect!');
+    console.assert(test === "bye bye", 'Incorrect!');
+
+
+    // Viewing DOM Elements
+    const p = document.querySelector('p');
+
+    console.log(p);
+    console.dir(p);
+
+    // Grouping together
+    pets.forEach(pet => {
+      console.group(`${pet.name}`);
+      console.log(`this is ${pet.name}`)
+      console.log(`the ${pet.name} is ${pet.age} years old`)
+      console.groupEnd(`${pet.name}`);
+    })
+
+    pets.forEach(pet => {
+      console.groupCollapsed(`${pet.name}`);
+      console.log(`this is ${pet.name}`)
+      console.log(`the ${pet.name} is ${pet.age} years old`)
+      console.groupEnd(`${pet.name}`);
+    })
+
+    // counting
+    console.count('Alex');
+    console.count('Alex');
+    console.count('Reina');
+    console.count('Reina');
+    console.count('Alex');
+    console.count('Reina');
+    console.count('Alex');
+    console.count('Reina');
+    console.count('Reina');
+    console.count('Reina');
+    console.count('Reina');
+    console.count('Reina');
+
+    // timing
+    console.time('fetching info');
+    fetch('https://api.github.com/users/a-vasse')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching info');
+        console.log(data);
+      });
+
+    // table
+    console.table(pets);
+  </script>
+</body>
+</html>
